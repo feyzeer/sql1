@@ -1,3 +1,41 @@
+<?php
+
+  if($_SERVER["REQUEST_METHOD"] == "POST"){
+
+
+    if(isset($_POST["email"]) && isset($_POST["password"])){
+
+
+      include("connection.php");
+
+      $email = $_POST["email"];
+      $password = hash('sha256', $_POST["password"]) ;
+
+       $query = "SELECT *  FROM comptes WHERE email = '$email'  AND  password = '$password' ";
+       $user = mysqli_query($connection,$query);
+
+ 
+       if( mysqli_num_rows($user) != 0 ){
+           session_start();
+           $rsl = mysqli_fetch_assoc($user);
+           $_SESSION['id'] = $rsl['id'];
+           $_SESSION['username'] = $rsl['username'];
+           $_SESSION['gmail'] = $rsl['email'];
+           header('Location: index.php');
+       }
+
+    }else{
+      $erre = '<div class="alert alert-danger" role="alert">
+               A simple danger alert—check it out!
+             </div>';
+    }
+
+  }
+
+
+
+
+?>
 
 <!doctype html>
 <html lang="en">
@@ -62,8 +100,8 @@
   </head>
   <body >
     <div class="boot">
-<main class="form-signin">
-  <form>
+  <main class="form-signin">
+  <form method="POST">
    
     <h1 class="h3 mb-3 fw-normal border-start border-4 border-info ps-2">E-Classe</h1>
     <h4 class=" text-center">SIGN IN</h4>
@@ -71,20 +109,19 @@
 
     <div class="mb-3">
         <label for="exampleFormControlInput1" class="form-label">Email</label>
-        <input type="Email" class="form-control" id="exampleFormControlInput1" placeholder="Enter your email">
+        <input type="Email" class="form-control" id="exampleFormControlInput1" placeholder="Enter your email" name="email">
       </div>
       <div class="mb-3">
         <label for="exampleFormControlInput1" class="form-label">Password</label>
-        <input type="Password" class="form-control" id="exampleFormControlInput1" placeholder="Enter your password">
+        <input type="Password" class="form-control" id="exampleFormControlInput1" placeholder="Enter your password" name="password">
       </div>
 
-  
-      
-   
-      <a class="w-100 text-white btn btn-info" href="secondpage.php" role="button">SIGN IN</a>
+      <input class="btn btn-primary mt-5" type="submit" name="submit" value="SIGN IN" />
+
+
     <div class="text-center mt-4 text-black-50">
-    <span >forgot your password?<a href="#">Reset password</a></span>
-</div>
+      <span >forgot your password?<a href="#">Reset password</a></span>
+    </div>
   
   </form>
 </main>

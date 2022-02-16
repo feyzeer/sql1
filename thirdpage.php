@@ -4,7 +4,6 @@
   $result = $connection->query($sql);
 
 
-
 ?>
 
 <!DOCTYPE html>

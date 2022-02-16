@@ -1,3 +1,18 @@
+<?php
+include_once('connection.php');
+$sql= "SELECT SUM(balance) AS sum FROM payment_details";
+$yoo=mysqli_fetch_assoc(mysqli_query($connection,$sql));
+
+$sql= "SELECT count(id) AS count FROM students";
+  $roo=mysqli_fetch_assoc(mysqli_query($connection,$sql));
+   echo $roo["count"];
+   
+
+
+
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,7 +38,7 @@
                   <div class="p-1 mt-2 rounded w-100" style="background: #F0F9FF; border-radius: 10%;" >
                   <i class="bi bi-mortarboard fs-3" style="color: #74C1ED;"></i>
                   <p>Student</p>
-                  <p class="text-end fw-bold fs-5">243</p>
+                  <p class="text-end fw-bold fs-5"><?php echo $roo["count"]; ?></p>
                 </div>
                 </div>  
                 <div style="min-width: 150px" class="col">
@@ -37,7 +52,7 @@
                   <div class="p-1 mt-2 rounded w-100" style="background: #FEFBEC; border-radius: 10%;">
                     <i class="bi bi-currency-dollar fs-3" style="color: #74C1ED;"></i> 
                     <p>Payment</p>
-                    <p class="text-end fw-bold fs-5">DHS 556,000</p>
+                    <p class="text-end fw-bold fs-5"><?php echo $yoo["sum"];?></p>
                   </div>
                 </div>
                 <div style="min-width: 150px" class="col">

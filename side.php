@@ -1,22 +1,17 @@
 <style>
-  #deskbtn{
-    display: none;
-  }
+    #deskbtn{
+      display: none;
+    }
+
+    .container-fluid-sm ul li:hover{
+          background-color:  #00C1FE ;
+   }
+
   @media (max-width:992px){
-  #deskbtn{
-    display: block;
+    #deskbtn{
+      display: block;
+    }
   }
-  }
-
-
-  
-
- 
-  
-
-
-  
-  
 
 </style>
 
@@ -34,12 +29,12 @@
       <div class="navbar">
         <div id="serp" class=" container-fluid-sm">
           <ul style="list-style: none;padding: 0; ">
-            <li><a class="nav-link text-dark text-center" style="padding: 10px 3px;" href="http://localhost/bootstrap1/secondpage.php"><i class="bi bi-house-door "></i> <span class="fs-6">  Home </span></a></li>
-            <li><a class="nav-link text-dark text-center" style="padding: 10px 3px;" href="#"><i class="bi bi-bookmark "></i> <span class=""> courses </span></a></li>
-            <li><a class="nav-link text-dark text-center" style="padding: 10px 3px;" href="http://localhost/bootstrap1/thirdpage.php"><i class="bi bi-mortarboard"></i> <span class=" fs-6"> students </span></a></li>
-            <li><a class="nav-link text-dark text-center" style="padding: 10px 3px;" href="http://localhost/bootstrap1/lastpage.php"><i class="bi bi-currency-dollar"></i> <span class="" fs-6> Payment </span></a></li>
-            <li><a class="nav-link text-dark text-center" style="padding: 10px 3px;" href="#"><i class="bi bi-file-earmark-bar-graph"></i> <span class=" fs-6"> Report </span></a></li>
-            <li><a class="nav-link text-dark text-center" style="padding: 10px 3px;" href="#"><i class="bi bi-sliders"> </i> <span class=""> Settings </span> </a></li>
+            <li><a class="nav-link text-dark text-center text-color-b" style="padding: 10px 3px;" href="http://localhost/bootstrap1/sql1/secondpage.php"><i class="bi bi-house-door "></i> <span class="fs-6">  Home </span></a></li>
+            <li><a class="nav-link text-dark text-center text-color-b" style="padding: 10px 3px;" href="#"><i class="bi bi-bookmark "></i> <span class=""> courses </span></a></li>
+            <li><a class="nav-link text-dark text-center text-color-b" style="padding: 10px 3px;" href="http://localhost/bootstrap1/sql1/thirdpage.php"><i class="bi bi-mortarboard"></i> <span class=" fs-6"> students </span></a></li>
+            <li><a class="nav-link text-dark text-center text-color-b" style="padding: 10px 3px;" href="http://localhost/bootstrap1/sql1/lastpage.php"><i class="bi bi-currency-dollar"></i> <span class="" fs-6> Payment </span></a></li>
+            <li><a class="nav-link text-dark text-center text-color-b" style="padding: 10px 3px;" href="#"><i class="bi bi-file-earmark-bar-graph"></i> <span class=" fs-6"> Report </span></a></li>
+            <li><a class="nav-link text-dark text-center text-color-b" style="padding: 10px 3px;" href="#"><i class="bi bi-sliders"> </i> <span class=""> Settings </span> </a></li>
             </ul>
           <a class="nav-link text-dark mt-4 ms-4  text-center" href="http://localhost/bootstrap1/"><span class=" fs-6"> Logout </span>  <i class="bi bi-box-arrow-right"></i></a>
           <div>

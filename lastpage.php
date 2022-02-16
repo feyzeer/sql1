@@ -1,3 +1,12 @@
+<?php
+
+  include_once('connection.php');
+  $sql = "SELECT * FROM payment_details";
+  $result = $connection->query($sql);
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -47,9 +56,11 @@
                 <div class="container-fluid">
                   <a class="navbar-brand fw-bold">Payment Details</a>
                   <form class="d-flex">
+                  <button class="btn btn-outline-white  bg-info "  type="submit"><a class="text-white nav-link" href= "add_payements.php"> ADD NEW STUDENT</a></button>
                     <a class=" mt-1 " href="#"><img src="Vector.png" alt=""></a>
                   </form>
                 </div>
+                
             </nav>
             <div class="container" >
               <div style="min-width:1000px; ">
@@ -58,33 +69,35 @@
                     <div class="col">Name</div>
                     <div class="col">Payment Schedule</div>
                     <div class="col">Bill Number</div>
-                    <div class="col">Bill Number</div>
                     <div class="col">Balance amount</div>  
                     <div class="col">Date </div>
                     <div class="col"></div>
+
+                    
                     <?php
-                        $payments = json_decode(file_get_contents('last.json'),true);
                        
-
-
-                  
-                        foreach($payments AS $payment)
-                        {
-                           
-                      ?>
-                        <div class="row row-cols-7 py-3 bg-white my-2 me-2">
-                            <div class="col pb-2" ><img  src="lastpic.png" alt=""></div>
-                            <div class="col py-3"><?php echo $payment['Name'] ?></div>
-                            <div class="col py-3"><?php echo $payment['Payment Schedule'] ?></div>
-                            <div class="col py-3"><?php echo $payment['Bill Number'] ?></div>
-                            <div class="col py-3"><?php echo $payment['Amount paid'] ?></div>
-                            <div class="col py-3"><?php echo $payment['Balance amount'] ?></div>
-                            <div class="col py-3"><?php echo $payment['Date'] ?></div>
-                            <div class="col text-end py-3">
-                            <a href="#"><img class="pe-2" src="view.png" alt=""></a>
+                        if ($result->num_rows > 0) {
+                          // output data of each row
+                          while($row = $result->fetch_assoc()) {
+                          echo'
+                          <div class="row bg-white rounded my-2 me-1 text-nowrap" >
+                                <div class="col pb-2" ><img  src="lastpic.png" alt=""></div>
+                                <div class="col py-3"> '.$row['name'].' </div>
+                                <div class="col py-3">  '.$row['schedule'].'</div>
+                                <div class="col py-3"> '. $row['billnumber'].' </div>
+                                <div class="col py-3"> '. $row['balance'].'</div>
+                                <div class="col py-3">'  .$row['date'].'</div>
+                                <div class="col text-end py-3">
+                                <a href=""><img class="pe-2"  src="modif.png" alt=""></a>
+                                </div>
                             </div>
-                        </div>
-                      <?php } ?>
+                            ';
+                          }
+                        } else {
+                          echo "0 results";
+                        }
+
+                    ?>
                 </div>
               </div>
             </div>
