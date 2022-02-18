@@ -12,8 +12,8 @@ if ($_SERVER ['REQUEST_METHOD'] ==='POST'){
 
     $sql = "INSERT INTO students(name,e_mail,phone,enroll_number,date_of_admission)
      VALUES ('$name',' $email','$phone','$enroll_number','$date_of_admission')";
-
-
+     mysqli_query($connection,$sql);
+     
      header('Location: thirdpage.php');
 }
 

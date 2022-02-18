@@ -23,7 +23,7 @@
         </div>
         <div class="img pt-3">
           <img src="ycpic.jpg" class="rounded-circle mx-auto w-50 d-block" alt="...">
-          <p class="text-center fw-bold">Admin Name</p>
+          <p class="text-center fw-bold"><?php echo $_SESSION['username']     ?></p>
           <p class="text-center text-info">Admin</p>
         </div>
       <div class="navbar">
@@ -36,7 +36,7 @@
             <li><a class="nav-link text-dark text-center text-color-b" style="padding: 10px 3px;" href="#"><i class="bi bi-file-earmark-bar-graph"></i> <span class=" fs-6"> Report </span></a></li>
             <li><a class="nav-link text-dark text-center text-color-b" style="padding: 10px 3px;" href="#"><i class="bi bi-sliders"> </i> <span class=""> Settings </span> </a></li>
             </ul>
-          <a class="nav-link text-dark mt-4 ms-4  text-center" href="http://localhost/bootstrap1/"><span class=" fs-6"> Logout </span>  <i class="bi bi-box-arrow-right"></i></a>
+          <a class="nav-link text-dark mt-4 ms-4  text-center" href="logout.php"><span class=" fs-6"> Logout </span>  <i class="bi bi-box-arrow-right"></i></a>
           <div>
             <br>
           </div>

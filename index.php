@@ -1,35 +1,45 @@
 <?php
 
+
+
   if($_SERVER["REQUEST_METHOD"] == "POST"){
 
 
     if(isset($_POST["email"]) && isset($_POST["password"])){
+     
+
 
 
       include("connection.php");
 
       $email = $_POST["email"];
-      $password = hash('sha256', $_POST["password"]) ;
+      
+      $password = $_POST['password'];
+     
+     
 
-       $query = "SELECT *  FROM comptes WHERE email = '$email'  AND  password = '$password' ";
-       $user = mysqli_query($connection,$query);
+       $bikswi = "SELECT *  FROM comptes WHERE email = '$email'  AND  password = '".hash('SHA256', $_POST["password"])."'";
+       $aha = mysqli_query($connection,$bikswi);
 
  
-       if( mysqli_num_rows($user) != 0 ){
+       if( mysqli_num_rows($aha) != 0 ){
+       if(isset($_POST['remember'])){
+        setcookie('email', $email, time()+86400);
+        setcookie('password', $password, time()+86400);
+       }
+   
            session_start();
-           $rsl = mysqli_fetch_assoc($user);
+           $rsl = mysqli_fetch_assoc($aha);
            $_SESSION['id'] = $rsl['id'];
            $_SESSION['username'] = $rsl['username'];
            $_SESSION['gmail'] = $rsl['email'];
-           header('Location: index.php');
+           header('Location: secondpage.php');
+       }else {
+        $zoo=1;
+        
        }
 
-    }else{
-      $erre = '<div class="alert alert-danger" role="alert">
-               A simple danger alert—check it out!
-             </div>';
     }
-
   }
 
 
@@ -40,6 +50,8 @@
 <!doctype html>
 <html lang="en">
   <head>
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
@@ -109,13 +121,14 @@
 
     <div class="mb-3">
         <label for="exampleFormControlInput1" class="form-label">Email</label>
-        <input type="Email" class="form-control" id="exampleFormControlInput1" placeholder="Enter your email" name="email">
+        <input type="Email" class="form-control" value="<?php if(isset($_COOKIE['email'])){ echo $_COOKIE['email'];}     ?>"  id="exampleFormControlInput1" placeholder="Enter your email" name="email">
       </div>
       <div class="mb-3">
         <label for="exampleFormControlInput1" class="form-label">Password</label>
-        <input type="Password" class="form-control" id="exampleFormControlInput1" placeholder="Enter your password" name="password">
+        <input type="Password" class="form-control"  value="<?php if(isset($_COOKIE['password'])){ echo $_COOKIE['password'];}     ?>" id="exampleFormControlInput1" placeholder="Enter your password" name="password">
+        <input type="checkbox" class=""  name="remember">
+        <label class='text-muted'>REMEBER ME</label>
       </div>
-
       <input class="btn btn-primary mt-5" type="submit" name="submit" value="SIGN IN" />
 
 
@@ -127,7 +140,21 @@
 </main>
 </div>
 
-
+<script>
+  <?php
+  if(isset($zoo)){
+    echo "
+    Swal.fire({
+      title: 'password or email invalid',
+      text: 'Do you want to continue',
+      icon: 'error',
+      confirmButtonText: 'EXIT'
+    })
+    ";
+  }
+  
+  ?>
+</script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
   </body>
 </html>

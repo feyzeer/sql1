@@ -10,6 +10,7 @@ if ($_SERVER['REQUEST_METHOD']=== 'POST'){
             $enroll_number=$_POST["enroll_number"];
             $date_of_admission=$_POST["date_of_admission"];
             
+            
 
             $sql = "UPDATE students SET name='$name',  e_mail='$e_mail',  phone='$phone',  enroll_number='$enroll_number',  date_of_admission='$date_of_admission'  WHERE id=".$_POST['id'];
             

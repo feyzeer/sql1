@@ -3,6 +3,7 @@
   include_once('connection.php');
   $sql = "SELECT * FROM payment_details";
   $result = $connection->query($sql);
+  
 
 ?>
 
@@ -56,7 +57,7 @@
                 <div class="container-fluid">
                   <a class="navbar-brand fw-bold">Payment Details</a>
                   <form class="d-flex">
-                  <button class="btn btn-outline-white  bg-info "  type="submit"><a class="text-white nav-link" href= "add_payements.php"> ADD NEW STUDENT</a></button>
+                  <button class="btn btn-outline-white  bg-info "  type="submit"><a class="text-white nav-link" href= "add_payements.php"> ADD NEW PAYMENT</a></button>
                     <a class=" mt-1 " href="#"><img src="Vector.png" alt=""></a>
                   </form>
                 </div>
@@ -73,7 +74,7 @@
                     <div class="col">Date </div>
                     <div class="col"></div>
 
-                    
+
                     <?php
                        
                         if ($result->num_rows > 0) {
@@ -88,7 +89,7 @@
                                 <div class="col py-3"> '. $row['balance'].'</div>
                                 <div class="col py-3">'  .$row['date'].'</div>
                                 <div class="col text-end py-3">
-                                <a href=""><img class="pe-2"  src="modif.png" alt=""></a>
+                                <a><img class="pe-2"  src="view.png" alt=""></a>
                                 </div>
                             </div>
                             ';
